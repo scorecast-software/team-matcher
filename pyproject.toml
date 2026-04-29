@@ -1,0 +1,83 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "team-matcher"
+version = "0.1.0"
+description = "Fuzzy matcher for sports team names across data feeds. Jaccard + Containment + kickoff-time bonus."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "ScoreCast", email = "team@scorecast.info" },
+]
+keywords = [
+    "fuzzy-matching",
+    "team-matching",
+    "sports",
+    "football",
+    "soccer",
+    "data-integration",
+    "name-matching",
+    "record-linkage",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Topic :: Text Processing :: General",
+    "Typing :: Typed",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4",
+    "mypy>=1.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/scorecast/team-matcher"
+Documentation = "https://github.com/scorecast/team-matcher#readme"
+Repository = "https://github.com/scorecast/team-matcher"
+Issues = "https://github.com/scorecast/team-matcher/issues"
+"Used in production" = "https://scorecast.info"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/team_matcher"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "src/team_matcher",
+    "tests",
+    "README.md",
+    "LICENSE",
+    "pyproject.toml",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM", "RUF"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+files = ["src/team_matcher"]
