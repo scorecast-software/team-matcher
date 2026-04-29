@@ -48,10 +48,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/scorecast/team-matcher"
-Documentation = "https://github.com/scorecast/team-matcher#readme"
-Repository = "https://github.com/scorecast/team-matcher"
-Issues = "https://github.com/scorecast/team-matcher/issues"
+Homepage = "https://github.com/scorecast-software/team-matcher"
+Documentation = "https://github.com/scorecast-software/team-matcher#readme"
+Repository = "https://github.com/scorecast-software/team-matcher"
+Issues = "https://github.com/scorecast-software/team-matcher/issues"
 "Used in production" = "https://scorecast.info"
 
 [tool.hatch.build.targets.wheel]

@@ -11,12 +11,11 @@ bonus when the candidate's kickoff is close to the query's kickoff.
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Iterable, List, Optional
 
 from team_matcher.similarity import score_pair
-
 
 DEFAULT_THRESHOLD = 0.55
 HIGH_CONFIDENCE = 0.85
@@ -40,7 +39,7 @@ class Candidate:
     home: str
     away: str
     league: str = ""
-    kickoff: Optional[datetime] = None
+    kickoff: datetime | None = None
     payload: object = None
 
 
@@ -60,7 +59,7 @@ class Match:
         object.__setattr__(self, "high_confidence", self.score >= HIGH_CONFIDENCE)
 
 
-def _time_bonus(query_dt: Optional[datetime], cand_dt: Optional[datetime]) -> float:
+def _time_bonus(query_dt: datetime | None, cand_dt: datetime | None) -> float:
     if query_dt is None or cand_dt is None:
         return 0.0
     diff_min = abs((query_dt - cand_dt).total_seconds()) / 60.0
@@ -78,10 +77,10 @@ def rank_candidates(
     league: str,
     candidates: Iterable[Candidate],
     *,
-    kickoff: Optional[datetime] = None,
-) -> List[Match]:
+    kickoff: datetime | None = None,
+) -> list[Match]:
     """Score and sort all candidates (descending). Does NOT apply a threshold."""
-    out: List[Match] = []
+    out: list[Match] = []
     for c in candidates:
         base, swapped = score_pair(home, away, league, c.home, c.away, c.league)
         bonus = _time_bonus(kickoff, c.kickoff)
@@ -104,9 +103,9 @@ def match_fixture(
     league: str,
     candidates: Iterable[Candidate],
     *,
-    kickoff: Optional[datetime] = None,
+    kickoff: datetime | None = None,
     threshold: float = DEFAULT_THRESHOLD,
-) -> Optional[Match]:
+) -> Match | None:
     """Return the best match above ``threshold``, or ``None``.
 
     Args:

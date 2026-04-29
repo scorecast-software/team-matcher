@@ -13,8 +13,6 @@ both direct and swapped orientations, returning the better one.
 
 from __future__ import annotations
 
-from typing import Set, Tuple
-
 from team_matcher.normalize import tokenize
 
 JACCARD_WEIGHT = 0.4
@@ -25,7 +23,7 @@ AWAY_WEIGHT = 0.4
 LEAGUE_WEIGHT = 0.2
 
 
-def _jc(a: Set[str], b: Set[str]) -> float:
+def _jc(a: set[str], b: set[str]) -> float:
     if not a or not b:
         return 0.0
     inter = len(a & b)
@@ -56,7 +54,7 @@ def score_pair(
     home_b: str,
     away_b: str,
     league_b: str,
-) -> Tuple[float, bool]:
+) -> tuple[float, bool]:
     """Score a fixture pair. Returns ``(score, swapped)``.
 
     ``swapped=True`` means the best score was achieved with home/away swapped

@@ -15,14 +15,13 @@ from __future__ import annotations
 
 import re
 import unicodedata
-from typing import Set
 
 # ---- Stop-words --------------------------------------------------------------
 # Generic club designators and language particles that carry no identifying
 # information across most leagues. Intentionally OMITS 'united', 'city',
 # 'town', 'team' -- those distinguish same-city clubs (Manchester United vs
 # Manchester City).
-STOP_WORDS: Set[str] = {
+STOP_WORDS: set[str] = {
     # club-type designators
     "fc", "sc", "cf", "mfc", "afc", "fk", "pk", "bk", "if", "rb",
     "ud", "ad", "ac", "as", "ca", "cd", "sk", "nk", "ss", "sv", "vfl",
@@ -73,7 +72,7 @@ def _normalize(s: str) -> str:
     return s.lower().strip()
 
 
-def tokenize(name: str) -> Set[str]:
+def tokenize(name: str) -> set[str]:
     """Tokenize a team name into a normalized, stop-word-filtered set.
 
     >>> sorted(tokenize("Manchester Utd FC"))
@@ -86,7 +85,7 @@ def tokenize(name: str) -> Set[str]:
     norm = _normalize(name)
     if not norm:
         return set()
-    out: Set[str] = set()
+    out: set[str] = set()
     for raw in _TOKEN_SPLIT_RE.split(norm):
         t = _TOKEN_CLEAN_RE.sub("", raw)
         if len(t) <= 1:

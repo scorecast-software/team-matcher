@@ -1,18 +1,18 @@
 from datetime import datetime, timedelta
 
-import pytest
-
 from team_matcher import Candidate, match_fixture, rank_candidates
-
 
 KICK = datetime(2026, 4, 27, 19, 45)
 
 
 def _epl_candidates():
+    epl = "Premier League"
     return [
-        Candidate("Manchester United", "Liverpool", "Premier League", KICK, payload="MUN-LIV"),
-        Candidate("Chelsea", "Arsenal", "Premier League", KICK + timedelta(hours=2), payload="CHE-ARS"),
-        Candidate("Tottenham", "Manchester City", "Premier League", KICK - timedelta(hours=3), payload="TOT-MCI"),
+        Candidate("Manchester United", "Liverpool", epl, KICK, payload="MUN-LIV"),
+        Candidate("Chelsea", "Arsenal", epl, KICK + timedelta(hours=2), payload="CHE-ARS"),
+        Candidate(
+            "Tottenham", "Manchester City", epl, KICK - timedelta(hours=3), payload="TOT-MCI"
+        ),
     ]
 
 

@@ -39,10 +39,6 @@ from team_matcher.matcher import (
     match_fixture,
     rank_candidates,
 )
-from team_matcher.similarity import (
-    score_pair,
-    similarity,
-)
 from team_matcher.normalize import (
     STOP_WORDS,
     TOKEN_ALIASES,
@@ -50,23 +46,27 @@ from team_matcher.normalize import (
     add_token_alias,
     tokenize,
 )
+from team_matcher.similarity import (
+    score_pair,
+    similarity,
+)
 
 __version__ = "0.1.0"
 
 __all__ = [
-    # tokens / config
-    "tokenize",
     "STOP_WORDS",
     "TOKEN_ALIASES",
-    "add_stop_word",
-    "add_token_alias",
-    # similarity primitives
-    "similarity",
-    "score_pair",
     # high-level matcher
     "Candidate",
     "Match",
+    "__version__",
+    "add_stop_word",
+    "add_token_alias",
     "match_fixture",
     "rank_candidates",
-    "__version__",
+    "score_pair",
+    # similarity primitives
+    "similarity",
+    # tokens / config
+    "tokenize",
 ]

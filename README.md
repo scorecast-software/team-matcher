@@ -3,7 +3,7 @@
 [![PyPI version](https://img.shields.io/pypi/v/team-matcher.svg)](https://pypi.org/project/team-matcher/)
 [![Python versions](https://img.shields.io/pypi/pyversions/team-matcher.svg)](https://pypi.org/project/team-matcher/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/scorecast/team-matcher/actions/workflows/ci.yml/badge.svg)](https://github.com/scorecast/team-matcher/actions/workflows/ci.yml)
+[![CI](https://github.com/scorecast-software/team-matcher/actions/workflows/ci.yml/badge.svg)](https://github.com/scorecast-software/team-matcher/actions/workflows/ci.yml)
 
 **Fuzzy matcher for sports team names across data feeds.**
 Pure Python, zero dependencies, well-tested.
@@ -150,7 +150,7 @@ The default of `0.55` is calibrated for cross-feed football data; raise it for s
 ## Development
 
 ```bash
-git clone https://github.com/scorecast/team-matcher
+git clone https://github.com/scorecast-software/team-matcher
 cd team-matcher
 pip install -e ".[dev]"
 pytest
